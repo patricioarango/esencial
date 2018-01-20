@@ -62,6 +62,7 @@ var app = {
     messagingSenderId: "284982651187"
   };
   firebase.initializeApp(config);
+  var db = firebase.database();
 console.log("aca");
 var connectedRef = db.ref(".info/connected");
 var conexion;
