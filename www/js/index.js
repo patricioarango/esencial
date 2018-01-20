@@ -16,6 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 var app = {
     // Application Constructor
     initialize: function() {
@@ -45,5 +46,32 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
-    }
-};
+
+    }   
+
+
+};//app
+
+       // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCA_ueGafVsmSpty6mo9KN5ubpwJEEGUcA",
+    authDomain: "esencialdev.firebaseapp.com",
+    databaseURL: "https://esencialdev.firebaseio.com",
+    projectId: "esencialdev",
+    storageBucket: "esencialdev.appspot.com",
+    messagingSenderId: "284982651187"
+  };
+  firebase.initializeApp(config);
+console.log("aca");
+var connectedRef = db.ref(".info/connected");
+var conexion;
+connectedRef.on("value", function(snap) {
+  if (snap.val() === true) {
+    console.log("conexion online");
+    conexion = true;
+
+} else {
+    console.log("conexion offline");
+    conexion = false;
+}
+});
