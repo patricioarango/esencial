@@ -105,4 +105,13 @@
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
+    <plugin name="cordova-plugin-buildinfo" spec="~2.0.1" />
+    <plugin name="cordova-universal-links-plugin" spec="~1.2.1" />
+    <plugin name="cordova-plugin-browsertab" spec="~0.2.0" />
+    <universal-links>
+    <host name="yrv97.app.goo.gl" scheme="https" />
+    <host name="esencialdev.firebaseapp.com/" scheme="https">
+        <path url="/__/auth/callback"/>
+    </host>
+</universal-links>
 </widget>
