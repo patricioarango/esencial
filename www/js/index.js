@@ -77,13 +77,11 @@ connectedRef.on("value", function(snap) {
 }
 });
 
+var user = firebase.auth().currentUser;
 
-
-        firebase.auth().onAuthStateChanged(function(user) {
-            if (user) {
-                console.log("esta logueado");
-                console.log(user);
-            } else {
+if (user) {
+  console.log(user);
+} else {
                 console.log("no logueado");
                var provider = new firebase.auth.GoogleAuthProvider();
 
@@ -102,8 +100,11 @@ firebase.auth().signInWithRedirect(provider).then(function() {
   var errorCode = error.code;
   var errorMessage = error.message;
 });
-            }
-        }); 
+}
+
+
+
+
 
 
 
