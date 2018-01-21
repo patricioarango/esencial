@@ -110,7 +110,7 @@
     <plugin name="cordova-plugin-browsertab" spec="~0.2.0" />
     <universal-links>
     <host name="yrv97.app.goo.gl" scheme="https" />
-    <host name="esencialdev.firebaseapp.com/" scheme="https">
+    <host name="esencialdev.firebaseapp.com" scheme="https">
         <path url="/__/auth/callback"/>
     </host>
 </universal-links>
