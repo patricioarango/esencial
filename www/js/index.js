@@ -16,6 +16,30 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+       // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCA_ueGafVsmSpty6mo9KN5ubpwJEEGUcA",
+    authDomain: "esencialdev.firebaseapp.com",
+    databaseURL: "https://esencialdev.firebaseio.com",
+    projectId: "esencialdev",
+    storageBucket: "esencialdev.appspot.com",
+    messagingSenderId: "284982651187"
+  };
+  firebase.initializeApp(config);
+  var db = firebase.database();
+console.log("aca");
+var connectedRef = db.ref(".info/connected");
+var conexion;
+connectedRef.on("value", function(snap) {
+  if (snap.val() === true) {
+    console.log("conexion online");
+    conexion = true;
+
+} else {
+    console.log("conexion offline");
+    conexion = false;
+}
+});
 
 var app = {
     // Application Constructor
@@ -52,30 +76,25 @@ var app = {
 
 };//app
 
-       // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyCA_ueGafVsmSpty6mo9KN5ubpwJEEGUcA",
-    authDomain: "esencialdev.firebaseapp.com",
-    databaseURL: "https://esencialdev.firebaseio.com",
-    projectId: "esencialdev",
-    storageBucket: "esencialdev.appspot.com",
-    messagingSenderId: "284982651187"
-  };
-  firebase.initializeApp(config);
-  var db = firebase.database();
-console.log("aca");
-var connectedRef = db.ref(".info/connected");
-var conexion;
-connectedRef.on("value", function(snap) {
-  if (snap.val() === true) {
-    console.log("conexion online");
-    conexion = true;
+app.buscador = () => {
+    var provider = new firebase.auth.GoogleAuthProvider();
 
-} else {
-    console.log("conexion offline");
-    conexion = false;
-}
+firebase.auth().signInWithRedirect(provider).then(function() {
+  return firebase.auth().getRedirectResult();
+}).then(function(result) {
+  // This gives you a Google Access Token.
+  // You can use it to access the Google API.
+  var token = result.credential.accessToken;
+  // The signed-in user info.
+  var user = result.user;
+  // ...
+}).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
 });
+}
+
 
 firebase.auth().getRedirectResult().then(function(result) {
   if (result.credential) {
@@ -99,28 +118,15 @@ console.log(user);
 if (user) {
   console.log(user);
 } else {
-    var provider = new firebase.auth.GoogleAuthProvider();
-
-firebase.auth().signInWithRedirect(provider).then(function() {
-  return firebase.auth().getRedirectResult();
-}).then(function(result) {
-  // This gives you a Google Access Token.
-  // You can use it to access the Google API.
-  var token = result.credential.accessToken;
-  // The signed-in user info.
-  var user = result.user;
-  // ...
-}).catch(function(error) {
-  // Handle Errors here.
-  var errorCode = error.code;
-  var errorMessage = error.message;
-});
+    
               
 }
 
 
 
-
+    document.getElementById('search').addEventListener('click', function() {
+        app.buscador();
+    });
 
 
 
