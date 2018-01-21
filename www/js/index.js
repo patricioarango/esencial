@@ -16,17 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-       // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyCA_ueGafVsmSpty6mo9KN5ubpwJEEGUcA",
-    authDomain: "esencialdev.firebaseapp.com",
-    databaseURL: "https://esencialdev.firebaseio.com",
-    projectId: "esencialdev",
-    storageBucket: "esencialdev.appspot.com",
-    messagingSenderId: "284982651187"
-  };
-  firebase.initializeApp(config);
-  var db = firebase.database();
+
 
 var app = {
     // Application Constructor
@@ -57,7 +47,27 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
-        console.log("aca");
+
+
+    }   
+
+
+
+};//app
+
+       // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCA_ueGafVsmSpty6mo9KN5ubpwJEEGUcA",
+    authDomain: "esencialdev.firebaseapp.com",
+    databaseURL: "https://esencialdev.firebaseio.com",
+    projectId: "esencialdev",
+    storageBucket: "esencialdev.appspot.com",
+    messagingSenderId: "284982651187"
+  };
+  firebase.initializeApp(config);
+  var db = firebase.database();
+
+console.log("aca");
 var connectedRef = db.ref(".info/connected");
 var conexion;
 connectedRef.on("value", function(snap) {
@@ -70,13 +80,6 @@ connectedRef.on("value", function(snap) {
     conexion = false;
 }
 });
-
-    }   
-
-
-
-};//app
-
 
 firebase.auth().getRedirectResult().then(function(result) {
   if (result.credential) {
