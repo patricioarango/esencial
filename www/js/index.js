@@ -73,6 +73,11 @@ connectedRef.on("value", function(snap) {
 
     }   
 
+
+
+};//app
+
+
 firebase.auth().getRedirectResult().then(function(result) {
   if (result.credential) {
     // This gives you a Google Access Token.
@@ -108,11 +113,6 @@ if (user) {
                 
             }
         }); 
-
-};//app
-
-
-
 
 app.buscador = () => {
     var provider = new firebase.auth.GoogleAuthProvider();
